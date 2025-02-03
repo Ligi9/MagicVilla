@@ -50,22 +50,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/VillaDto"
+                "$ref": "#/components/schemas/VillaCreateDto"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VillaDto"
+                "$ref": "#/components/schemas/VillaCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/VillaDto"
+                "$ref": "#/components/schemas/VillaCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/VillaDto"
+                "$ref": "#/components/schemas/VillaCreateDto"
               }
             }
           }
@@ -278,22 +278,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/VillaDto"
+                "$ref": "#/components/schemas/VillaUpdateDto"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VillaDto"
+                "$ref": "#/components/schemas/VillaUpdateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/VillaDto"
+                "$ref": "#/components/schemas/VillaUpdateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/VillaDto"
+                "$ref": "#/components/schemas/VillaUpdateDto"
               }
             }
           }
@@ -469,6 +469,45 @@
         },
         "additionalProperties": { }
       },
+      "VillaCreateDto": {
+        "required": [
+          "nombre",
+          "tarifa"
+        ],
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "maxLength": 30,
+            "minLength": 1,
+            "type": "string"
+          },
+          "detalle": {
+            "type": "string",
+            "nullable": true
+          },
+          "tarifa": {
+            "type": "number",
+            "format": "double"
+          },
+          "ocupantes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "metrosCuadrados": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imagenUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "amenidad": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "VillaDto": {
         "required": [
           "nombre",
@@ -504,6 +543,53 @@
           "imagenUrl": {
             "type": "string",
             "nullable": true
+          },
+          "amenidad": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VillaUpdateDto": {
+        "required": [
+          "id",
+          "imagenUrl",
+          "metrosCuadrados",
+          "nombre",
+          "ocupantes",
+          "tarifa"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "maxLength": 30,
+            "minLength": 1,
+            "type": "string"
+          },
+          "detalle": {
+            "type": "string",
+            "nullable": true
+          },
+          "tarifa": {
+            "type": "number",
+            "format": "double"
+          },
+          "ocupantes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "metrosCuadrados": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imagenUrl": {
+            "minLength": 1,
+            "type": "string"
           },
           "amenidad": {
             "type": "string",
